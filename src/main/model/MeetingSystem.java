@@ -19,7 +19,7 @@ public class MeetingSystem {
     }
 
 
-    // REQUIRES: Meeting is not in the meetingList
+
     // MODIFIES: this
     // EFFECTS: return "Your meeting has been added!" if successful, "fail to add your meeting" otherwise
     public String addMeeting(Meeting meeting) {

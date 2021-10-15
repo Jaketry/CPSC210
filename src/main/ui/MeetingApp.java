@@ -45,10 +45,14 @@ public class MeetingApp {
             doAddMeeting();
         } else if (command.equals("p")) {
             doGetPlace();
+        } else if (command.equals("m")) {
+            doGetMonth();
         } else if (command.equals("d")) {
             doGetDay();
         } else if (command.equals("t")) {
             doGetFromHour();
+        } else if (command.equals("l")) {
+            doGetDuration();
         } else if (command.equals("c")) {
             doCancelMeeting();
         } else {
@@ -69,8 +73,10 @@ public class MeetingApp {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> addMeeting");
         System.out.println("\tp -> getPlace");
+        System.out.println("\tm -> getMonth");
         System.out.println("\td -> getDay");
         System.out.println("\tt -> getFromHour");
+        System.out.println("\tl -> getDuration");
         System.out.println("\tc -> cancelMeeting");
         System.out.println("\tq -> quit");
     }
@@ -88,11 +94,11 @@ public class MeetingApp {
 
         System.out.print("Enter your meetingDay: ");
         int meetingDay = input.nextInt();
-        meeting.setMonth(meetingDay);
+        meeting.setDay(meetingDay);
 
         System.out.print("Enter your meetingFromHour: ");
         int meetingFromHour = input.nextInt();
-        meeting.setMonth(meetingFromHour);
+        meeting.setFromHour(meetingFromHour);
 
         System.out.print("Enter your meetingDuration: ");
         int meetingDuration = input.nextInt();
@@ -101,7 +107,7 @@ public class MeetingApp {
         System.out.print("Enter your meetingRoomNO: ");
         int meetingRoomNO = input.nextInt();
         if (meetingRoomNO <= 20 && 1 <= meetingRoomNO) {
-            meeting.setDuration(meetingRoomNO);
+            meeting.setRoomNO(meetingRoomNO);
         } else {
             System.out.println("Invalid Room NO...\n");
         }
@@ -116,6 +122,14 @@ public class MeetingApp {
         int meetingID = input.nextInt();
         int roomNO = meetingList.getMeetingPlace(meetingID);
         System.out.println("Your meeting room no is " + roomNO);
+    }
+
+    // EFFECTS: review the month for the meeting based on the given meetingID
+    private void doGetMonth() {
+        System.out.print("Enter your meetingID: ");
+        int meetingID = input.nextInt();
+        int month = meetingList.getMonth(meetingID);
+        System.out.println("The month for your meeting is " + month);
     }
 
 
@@ -134,6 +148,14 @@ public class MeetingApp {
         int meetingID = input.nextInt();
         int time = meetingList.getFromHour(meetingID);
         System.out.println("Your meeting starts from " + time);
+    }
+
+    // EFFECTS: review the duration for the meeting based on the given meetingID
+    private void doGetDuration() {
+        System.out.print("Enter your meetingID: ");
+        int meetingID = input.nextInt();
+        int duration = meetingList.getDuration(meetingID);
+        System.out.println("The duration for your meeting is " + duration);
     }
 
 

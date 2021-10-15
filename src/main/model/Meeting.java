@@ -2,6 +2,10 @@ package model;
 
 public class Meeting {
 
+    // we use 24/7 time for this meeting system;
+    // duration must be at least 1 hour;
+    // room no less than or equal 20;
+
     private int meetingID;
     private int month;
     private int day;
@@ -65,7 +69,9 @@ public class Meeting {
     public Boolean isSameMeeting(Meeting meeting) {
         return this.roomNO == meeting.getRoomNO()
                 && this.month == meeting.getMonth() && this.day == meeting.getDay()
-                && this.fromHour <= meeting.getFromHour() && meeting.getFromHour() < this.fromHour + this.duration;
+                && ((this.fromHour <= meeting.getFromHour() && meeting.getFromHour() < this.fromHour + this.duration)
+                || (meeting.getFromHour() < this.fromHour
+                && this.fromHour < meeting.getFromHour() + meeting.getDuration()));
     }
 
     // MODIFIES: this
@@ -74,30 +80,35 @@ public class Meeting {
         this.meetingID = n;
     }
 
+    // REQUIRES: n is natural number from 1 to 12
     // MODIFIES: this
     // EFFECTS: set the meetingMonth as given n
     public void setMonth(int n) {
         this.month = n;
     }
 
+    // REQUIRES: n is natural number from 1 to 31
     // MODIFIES: this
     // EFFECTS: set the meetingDay as given n
     public void setDay(int n) {
         this.day = n;
     }
 
+    // REQUIRES: n is natural number from 0 to 24
     // MODIFIES: this
     // EFFECTS: set the meeting starting time as given n
     public void setFromHour(int n) {
         this.fromHour = n;
     }
 
+    // REQUIRES: n less than 5
     // MODIFIES: this
     // EFFECTS: set the meetingDuration as given n
     public void setDuration(int n) {
         this.duration = n;
     }
 
+    // REQUIRES: n less than 20
     // MODIFIES: this
     // EFFECTS: set the roomNO as given n
     public void setRoomNO(int n) {

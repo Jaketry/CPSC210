@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 public class MeetingTest {
 
     private Meeting meeting;
@@ -99,9 +98,27 @@ public class MeetingTest {
     @Test
     public void testIsSameMeeting() {
         Meeting meeting1 = new Meeting(1, 8, 10, 2, 2, 20);
-        Meeting meeting2 = new Meeting(3, 30, 20, 12, 1, 5);
+        Meeting meeting2 = new Meeting(3, 7, 20, 12, 1, 5);
+        Meeting meeting3 = new Meeting(3, 9, 20, 12, 1, 20);
+        Meeting meeting4 = new Meeting(9, 9, 21, 11, 3, 20);
+        Meeting meeting5 = new Meeting(23, 9, 21, 10, 3, 20);
+        Meeting meeting6 = new Meeting(21, 9, 21, 10, 2, 20);
+        Meeting meeting7 = new Meeting(17, 9, 21, 12, 1, 20);
+        Meeting meeting8 = new Meeting(18, 9, 21, 8, 2, 20);
+        Meeting meeting9 = new Meeting(19, 9, 21, 13, 4, 20);
+        Meeting meeting10 = new Meeting(34, 9, 21, 14, 1, 20);
+
         assertTrue(meeting.isSameMeeting(meeting1));
-        assertFalse(meeting.isSameMeeting(meeting2));
+        assertFalse(meeting1.isSameMeeting(meeting2));
+        assertFalse(meeting1.isSameMeeting(meeting3));
+        assertFalse(meeting3.isSameMeeting(meeting4));
+        assertTrue(meeting4.isSameMeeting(meeting5));
+        assertTrue(meeting5.isSameMeeting(meeting6));
+        assertTrue(meeting4.isSameMeeting(meeting7));
+        assertFalse(meeting5.isSameMeeting(meeting8));
+        assertFalse(meeting8.isSameMeeting(meeting9));
+        assertFalse(meeting8.isSameMeeting(meeting10));
+
     }
 
     @Test
@@ -145,20 +162,6 @@ public class MeetingTest {
         meeting.setRoomNO(17);
         assertEquals(17, meeting.getRoomNO());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
