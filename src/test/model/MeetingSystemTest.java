@@ -85,6 +85,19 @@ class MeetingSystemTest {
     }
 
     @Test
+    public void testGetDuration() {
+        Meeting meeting = new Meeting(7, 4, 28, 13, 2, 15);
+        meetingList.addMeeting(meeting);
+        Meeting meeting1 = new Meeting(16, 8, 7, 12, 1, 20);
+        meetingList.addMeeting(meeting1);
+        assertEquals(2, meetingList.getDuration(7));
+        assertEquals(-1, meetingList.getDuration(8));
+        assertEquals(1, meetingList.getDuration(16));
+    }
+
+
+
+    @Test
     void testLength() {
         assertEquals(0, meetingList.length());
         Meeting meeting = new Meeting(3, 10, 8, 13, 2, 15);
