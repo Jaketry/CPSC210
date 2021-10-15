@@ -107,6 +107,9 @@ public class MeetingTest {
         Meeting meeting8 = new Meeting(18, 9, 21, 8, 2, 20);
         Meeting meeting9 = new Meeting(19, 9, 21, 13, 4, 20);
         Meeting meeting10 = new Meeting(34, 9, 21, 14, 1, 20);
+        Meeting meeting11 = new Meeting(35, 9, 21, 8, 5, 20);
+        Meeting meeting12 = new Meeting(36, 9, 21, 10, 1, 20);
+        Meeting meeting13 = new Meeting(37, 7, 21, 10, 1, 5);
 
         assertTrue(meeting.isSameMeeting(meeting1));
         assertFalse(meeting1.isSameMeeting(meeting2));
@@ -118,6 +121,9 @@ public class MeetingTest {
         assertFalse(meeting5.isSameMeeting(meeting8));
         assertFalse(meeting8.isSameMeeting(meeting9));
         assertFalse(meeting8.isSameMeeting(meeting10));
+        assertFalse(meeting9.isSameMeeting(meeting11));
+        assertTrue(meeting11.isSameMeeting(meeting12));
+        assertFalse(meeting2.isSameMeeting(meeting13));
 
     }
 
