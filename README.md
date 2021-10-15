@@ -21,7 +21,7 @@ applications for other occasions.
 
 
 
-A List of *User Stories* :\
+A List of *User Stories* :
 - As a user, I want to add a meeting to the meeting system
 - As a user, I want to review my meeting room number and time based on
 meeting ID
