@@ -25,6 +25,8 @@ A List of *User Stories* :
 - As a user, I want to add a meeting to the meeting system
 - As a user, I want to review my meeting room number and time based on
 meeting ID
+- As a user, I want to be able to get my meeting place/duration/location and other
+info if i give the meeting id
 - As a user, I want to cancel my meeting in the meeting system
 
 
