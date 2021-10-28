@@ -25,7 +25,12 @@ applications for other occasions.
 - As a user, I want to add a meeting to the meeting system
 - As a user, I want to review my meeting room number and time based on
 meeting ID
+- As a user, I want to get meeting duration or other information based
+on meeting ID
 - As a user, I want to cancel my meeting in the meeting system
+- As a user, I want to save my meeting schedule to a file
+- As a user, I want to load my meeting schedule from file to the meeting
+system
 
 
 

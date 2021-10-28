@@ -1,6 +1,9 @@
 package model;
 
-public class Meeting {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Meeting implements Writable {
 
     // we use 24/7 time for this meeting system;
     // duration must be at least 1 hour;
@@ -14,15 +17,16 @@ public class Meeting {
     private int roomNO;
     private Boolean isCompleted;
 
-    public Meeting(int meetingID, int month, int day, int fromHour, int duration, int roomNO) {
+    public Meeting(int meetingID, int month, int day, int fromHour, int duration, int roomNO, Boolean isCompleted) {
         this.meetingID = meetingID;
         this.month = month;
         this.day = day;
         this.fromHour = fromHour;
         this.duration = duration;
         this.roomNO = roomNO;
-        this.isCompleted = false;
+        this.isCompleted = isCompleted;
     }
+
 
     // EFFECTS: return meetingID for a meeting
     public int getMeetingID() {
@@ -59,11 +63,6 @@ public class Meeting {
         return this.isCompleted;
     }
 
-    // MODIFIES: this
-    // EFFECTS: set a meeting's status as "complete"
-    public void setCompleted() {
-        this.isCompleted = true;
-    }
 
     // EFFECTS: return true if two meeting are the same, false otherwise
     public Boolean isSameMeeting(Meeting meeting) {
@@ -72,6 +71,11 @@ public class Meeting {
                 && ((this.fromHour <= meeting.getFromHour() && meeting.getFromHour() < this.fromHour + this.duration)
                 || (meeting.getFromHour() < this.fromHour
                 && this.fromHour < meeting.getFromHour() + meeting.getDuration()));
+    }
+
+    public String toString() {
+        return "ID: " + meetingID + "; Month: " + month + "; Day: " + day + "; FromHour: " + fromHour
+                + "; Duration: " + duration + "; RoomNO: " + roomNO + "; Status: " + isCompleted;
     }
 
     // MODIFIES: this
@@ -114,4 +118,31 @@ public class Meeting {
     public void setRoomNO(int n) {
         this.roomNO = n;
     }
+
+    // MODIFIES: this
+    // EFFECTS: set a meeting's status as "complete"
+    public void setCompleted() {
+        this.isCompleted = true;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: set a meeting's status as "complete"
+    public void setStatus(Boolean status) {
+        this.isCompleted = status;
+    }
+
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("meetingID", meetingID);
+        json.put("month", month);
+        json.put("day", day);
+        json.put("fromHour", fromHour);
+        json.put("duration", duration);
+        json.put("roomNO", roomNO);
+        json.put("isCompleted", isCompleted);
+        return json;
+    }
 }
+

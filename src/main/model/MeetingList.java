@@ -1,23 +1,40 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
 // Represents a list of meetings
 // with maximum size MAX_ROOM_NO
 
-public class MeetingSystem {
+public class MeetingList implements Writable {
 
     public static final int MAX_ROOM_NO = 20;
+
+    private int studentID;
 
     private List<Meeting> meetingList;
 
 
     // EFFECTS: initialize meetingList as empty list
-    public MeetingSystem() {
+    public MeetingList(int studentID) {
+        this.studentID = studentID;
         this.meetingList = new ArrayList<>();
     }
 
+    // EFFECTS: returns studentID
+    public int getStudentID() {
+        return this.studentID;
+    }
+
+    // EFFECTS: returns an unmodifiable list of meeting in this meeting system
+    public List<Meeting> getMeetingList() {
+        return this.meetingList;
+    }
 
 
     // MODIFIES: this
@@ -122,4 +139,27 @@ public class MeetingSystem {
     }
 
 
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("studentID", studentID);
+        json.put("meetingList", meetingListToJson());
+        return json;
+    }
+
+    // EFFECTS: returns meetings in this meeting system as a JSON array
+    private JSONArray meetingListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Meeting m : meetingList) {
+            jsonArray.put(m.toJson());
+        }
+
+        return jsonArray;
+    }
+
+
 }
+
+
