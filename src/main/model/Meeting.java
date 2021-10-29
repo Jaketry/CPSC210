@@ -17,6 +17,8 @@ public class Meeting implements Writable {
     private int roomNO;
     private Boolean isCompleted;
 
+
+    // EFFECTS: construct a Meeting with given information
     public Meeting(int meetingID, int month, int day, int fromHour, int duration, int roomNO, Boolean isCompleted) {
         this.meetingID = meetingID;
         this.month = month;
@@ -73,6 +75,7 @@ public class Meeting implements Writable {
                 && this.fromHour < meeting.getFromHour() + meeting.getDuration()));
     }
 
+    // EFFECTS: return meeting in a string
     public String toString() {
         return "ID: " + meetingID + "; Month: " + month + "; Day: " + day + "; FromHour: " + fromHour
                 + "; Duration: " + duration + "; RoomNO: " + roomNO + "; Status: " + isCompleted;
@@ -132,6 +135,9 @@ public class Meeting implements Writable {
     }
 
 
+
+    // MODIFIES: this
+    // EFFECTS: convert meeting to a Json Object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

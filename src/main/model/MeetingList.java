@@ -139,7 +139,8 @@ public class MeetingList implements Writable {
     }
 
 
-
+    // MODIFIES: this
+    // EFFECTS: convert meetingList to a Json Object
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
