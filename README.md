@@ -33,6 +33,7 @@ on meeting ID
 - As a user, I want to save my meeting schedule to a file
 - As a user, I want to load my meeting schedule from file to the meeting
 system
+- As a user, I want to print my meeting in the meeting list
 
 
 

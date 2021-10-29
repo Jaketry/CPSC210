@@ -8,6 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class JsonWriter {
+
+    // the references for this class is from workroom demo of CPSC 210
     private static final int TAB = 15;
     private PrintWriter writer;
     private String destination;

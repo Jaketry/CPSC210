@@ -12,6 +12,8 @@ import org.json.*;
 
 
 public class JsonReader {
+
+    // the references for this class is from workroom demo of CPSC 210
     private String source;
 
     // EFFECTS: constructs reader to read from source file
@@ -19,7 +21,7 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads meeting system from file and returns it;
+    // EFFECTS: reads meeting list from file and returns it;
     // throws IOException if an error occurs reading data from file
     public MeetingList read() throws IOException {
         String jsonData = readFile(source);
@@ -38,7 +40,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses meeting system from JSON object and returns it
+    // EFFECTS: parses meeting list from JSON object and returns it
     private MeetingList parseMeetingSystem(JSONObject jsonObject) {
         int studentID = jsonObject.getInt("studentID");
         MeetingList ms = new MeetingList(studentID);
@@ -69,7 +71,6 @@ public class JsonReader {
         Meeting meeting = new Meeting(meetingID, month, day, fromHour, duration, roomNO, isCompleted);
         ms.addMeeting(meeting);
     }
-
 
 
 
