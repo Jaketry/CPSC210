@@ -43,6 +43,8 @@ public class Gui extends JFrame {
     private JButton button10 = new JButton("Get Meeting FromHour");
     private JButton button11 = new JButton("Get Meeting Duration");
     private JButton button12 = new JButton("Image");
+    private JButton button13 = new JButton("Quit");
+
 
 
     private JLabel label1 = new JLabel("Meeting ID");
@@ -72,10 +74,12 @@ public class Gui extends JFrame {
     private JLabel label;
     private ImageIcon image;
 
+    JFrame frame;
+
 
     // // EFFECTS: create a gui constructor with a JFrame;
     public Gui() {
-        JFrame frame = new JFrame("My Meeting List");
+        frame = new JFrame("My Meeting List");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1100, 900);
         container = frame.getContentPane();
@@ -114,7 +118,7 @@ public class Gui extends JFrame {
         //PanelTop
         panelTop.setBorder(new LineBorder(Color.BLACK, 3));
         panelTop.setBackground(Color.YELLOW);
-        panelTop.setLayout(new FlowLayout(9));
+        panelTop.setLayout(new FlowLayout(10));
         container.add(panelTop, BorderLayout.NORTH);
 
         // Buttons
@@ -125,6 +129,7 @@ public class Gui extends JFrame {
         panelTop.add(button5);
         panelTop.add(button6);
         panelTop.add(button12);
+        panelTop.add(button13);
     }
 
     // MODIFIES: this
@@ -158,10 +163,6 @@ public class Gui extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (JOptionPane.showInputDialog("Please enter your meeting ID").equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please fill in your meeting ID!",
-                            "Meeting Error", JOptionPane.ERROR_MESSAGE);
-                }
                 meetingID = Integer.parseInt(JOptionPane.showInputDialog("Please enter your meeting ID"));
                 model1.addElement(doCancelMeeting());
 
@@ -209,7 +210,6 @@ public class Gui extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 printMeetingList();
-                //model1.addElement(printMeetingList());
             }
         });
     }
@@ -308,7 +308,16 @@ public class Gui extends JFrame {
         });
     }
 
-
+    // EFFECTS: print EventLog on console and close JFrame when "quit" button is clicked
+    public void button13Action() {
+        button13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                meetingList.printLog();
+                frame.dispose();
+            }
+        });
+    }
 
 
     // MODIFIES: this
@@ -329,6 +338,7 @@ public class Gui extends JFrame {
         button10Action();
         button11Action();
         button12Action();
+        button13Action();
         leftPanel();
         rightPanel();
     }

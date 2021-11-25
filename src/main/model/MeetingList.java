@@ -3,8 +3,11 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
+import model.Event;
+import model.EventLog;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -43,6 +46,7 @@ public class MeetingList implements Writable {
         if (meeting.getRoomNO() <= MAX_ROOM_NO) {
             if (meetingList.isEmpty()) {
                 meetingList.add(meeting);
+                EventLog.getInstance().logEvent(new Event("Your meeting has been added"));
                 return "Your meeting has been added!";
             }
 
@@ -55,10 +59,13 @@ public class MeetingList implements Writable {
             }
             if (!foundSameMeeting) {
                 meetingList.add(meeting);
+                EventLog.getInstance().logEvent(new Event("Your meeting has been added"));
                 return "Your meeting has been added!";
             }
+
         }
-        return "fail to add your meeting";
+        EventLog.getInstance().logEvent(new Event("Fail to add your meeting"));
+        return "Fail to add your meeting";
     }
 
 
@@ -67,9 +74,11 @@ public class MeetingList implements Writable {
     public int getMeetingPlace(int meetingID) {
         for (Meeting meeting : meetingList) {
             if (meeting.getMeetingID() == meetingID) {
+                EventLog.getInstance().logEvent(new Event("Getting meeting place"));
                 return meeting.getRoomNO();
             }
         }
+        EventLog.getInstance().logEvent(new Event("Fail to get meeting place"));
         return -1;
     }
 
@@ -79,9 +88,11 @@ public class MeetingList implements Writable {
     public int getMonth(int meetingID) {
         for (Meeting meeting : meetingList) {
             if (meeting.getMeetingID() == meetingID) {
+                EventLog.getInstance().logEvent(new Event("Getting meeting month"));
                 return meeting.getMonth();
             }
         }
+        EventLog.getInstance().logEvent(new Event("Fail to get meeting month"));
         return -1;
     }
 
@@ -91,9 +102,11 @@ public class MeetingList implements Writable {
     public int getDay(int meetingID) {
         for (Meeting meeting : meetingList) {
             if (meeting.getMeetingID() == meetingID) {
+                EventLog.getInstance().logEvent(new Event("Getting meeting day"));
                 return meeting.getDay();
             }
         }
+        EventLog.getInstance().logEvent(new Event("Fail to get meeting day"));
         return -1;
     }
 
@@ -103,9 +116,11 @@ public class MeetingList implements Writable {
     public int getFromHour(int meetingID) {
         for (Meeting meeting : meetingList) {
             if (meeting.getMeetingID() == meetingID) {
+                EventLog.getInstance().logEvent(new Event("Getting meeting fromHour"));
                 return meeting.getFromHour();
             }
         }
+        EventLog.getInstance().logEvent(new Event("Fail to meeting fromHour"));
         return -1;
     }
 
@@ -113,9 +128,11 @@ public class MeetingList implements Writable {
     public int getDuration(int meetingID) {
         for (Meeting meeting : meetingList) {
             if (meeting.getMeetingID() == meetingID) {
+                EventLog.getInstance().logEvent(new Event("Getting meeting duration"));
                 return meeting.getDuration();
             }
         }
+        EventLog.getInstance().logEvent(new Event("Fail to get meeting duration"));
         return -1;
     }
 
@@ -132,9 +149,11 @@ public class MeetingList implements Writable {
             if (meeting.getMeetingID() == meetingID) {
                 meeting.setCompleted();
                 meetingList.remove(meeting);
+                EventLog.getInstance().logEvent(new Event("Your meeting has been removed"));
                 return true;
             }
         }
+        EventLog.getInstance().logEvent(new Event("Fail to remove meeting"));
         return false;
     }
 
@@ -159,6 +178,16 @@ public class MeetingList implements Writable {
 
         return jsonArray;
     }
+
+    public void printLog() {
+        Iterator<Event> it = EventLog.getInstance().iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next().toString());
+        }
+    }
+
+
+
 
 
 }

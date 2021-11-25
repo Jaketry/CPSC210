@@ -37,3 +37,56 @@ system
 
 
 
+Phase 4: Task 2
+
+- Add Meeting
+  (e.g. Tue Nov 23 12:09:28 PST 2021
+        Your meeting has been added)
+- Remove Meeting
+  (e.g. Tue Nov 23 12:11:47 PST 2021
+        Your meeting has been removed)
+- Getting Meeting Place
+  (e.g. Tue Nov 23 12:11:47 PST 2021
+        Getting meeting place)
+- Getting Meeting Month
+  (e.g. Tue Nov 23 12:11:47 PST 2021
+        Getting meeting month)
+- Getting Meeting Day
+  (e.g. Tue Nov 23 12:11:47 PST 2021
+        Getting meeting day)
+- Getting Meeting FromHour
+  (e.g. Tue Nov 23 12:11:47 PST 2021
+        Getting meeting fromHour)
+- Getting Meeting Duration
+  (e.g. Tue Nov 23 12:11:47 PST 2021
+        Getting meeting duration)
+
+
+Phase 4: Task 3
+
+![](UML.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
