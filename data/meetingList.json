@@ -1,23 +1,12 @@
 {
                "studentID": 27268507,
-               "meetingList": [
-                              {
-                                             "duration": 4,
-                                             "month": 3,
-                                             "fromHour": 3,
-                                             "roomNO": 3,
-                                             "meetingID": 6,
-                                             "day": 4,
-                                             "isCompleted": false
-                              },
-                              {
-                                             "duration": 3,
-                                             "month": 3,
-                                             "fromHour": 3,
-                                             "roomNO": 12,
-                                             "meetingID": 4,
-                                             "day": 4,
-                                             "isCompleted": false
-                              }
-               ]
+               "meetingList": [{
+                              "duration": 3,
+                              "month": 2,
+                              "fromHour": 2,
+                              "roomNO": 12,
+                              "meetingID": 3,
+                              "day": 4,
+                              "isCompleted": false
+               }]
 }
